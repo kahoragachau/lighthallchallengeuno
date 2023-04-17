@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(parseInt(localStorage.getItem("count") || 0))
+  const [count, setCount] = useState(parseInt(localStorage.getItem("count")))
   
   console.log(parseInt(count))
 
@@ -14,6 +14,9 @@ function App() {
     localStorage.setItem("count", count)
   },[count])
   
+  const handleReset = () => {
+    setCount(0)
+  }
 
   return (
     <div className="App">
@@ -21,6 +24,9 @@ function App() {
       <div className="card">
         <button onClick={handleClick}>
           count is {(count)}
+        </button>
+        <button onClick={handleReset}>
+          Reset
         </button>
       </div>
     </div>
